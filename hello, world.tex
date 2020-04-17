@@ -1,8 +1,15 @@
 \documentclass[12pt, a4paper]{article}
+\setlength{\parskip}{.3em}
+\setlength{\parindent}{2em}
 \usepackage{mathtools}
 \usepackage{blindtext}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{xeCJK}
+\xeCJKsetup{CJKglue=\hspace{0pt plus .08 \baselineskip }}
+\xeCJKsetup{RubberPunctSkip=false}
+\xeCJKsetup{PunctStyle=plain}
+\xeCJKsetup{CheckSingle=true}
 \setCJKmainfont{Noto Serif CJK TC}[
 	FontFace={el}{n}{* ExtraLight},
 	FontFace={l}{n}{* Light},
@@ -27,13 +34,19 @@
 \author{nevikw39}
 
 \begin{document}
+
 \maketitle
 \tableofcontents
 \listoftables
 \listoffigures
+
 \section{hello, world}
-This is my first \textsf{\textbf{\TeX}} document.\\
-\begin{table}[h!]
+
+This is my first \textsf{\textbf{\TeX}} document.
+
+\section{CJK Fonts}
+
+\begin{table}[H]
     \centering
     \begin{tabular}{l|l}
         ExtraLight & {\fontseries{el}\selectfont 中文} \\ \hline
@@ -45,7 +58,8 @@ This is my first \textsf{\textbf{\TeX}} document.\\
     \end{tabular}
     \caption{CJK Main fonts}
 \end{table}
-\begin{table}[h!]
+
+\begin{table}[H]
     \centering\sffamily
     \begin{tabular}{l|l}
         Thin      & {\fontseries{el}\selectfont 中文} \\ \hline
@@ -57,74 +71,136 @@ This is my first \textsf{\textbf{\TeX}} document.\\
     \end{tabular}
     \caption{CJK Sans fonts}
 \end{table}
-\begin{table}[h!]
+
+\begin{table}[h]
     \centering\ttfamily
     \begin{tabular}{l|l}
         Medium & {\fontseries{m}\selectfont 中文} \\ \hline
-        Bold    & {\fontseries{b}\selectfont 中文} \\
+        Bold   & {\fontseries{b}\selectfont 中文} \\
     \end{tabular}
     \caption{CJK Mono fonts}
 \end{table}
+
 \section{《周易·謙卦》}
-\begin{center}
+
+\begin{figure}[h]
+    \centering
 	\includegraphics[width=\textwidth/8]{chiang.png}
-\end{center}
+	\caption{謙卦}
+\end{figure}
+
 亨，君子有終。
+
 \subsubsection{彖傳}
+
 謙，亨，天道下濟而光明，地道卑而上行。天道虧盈而益謙，地道變盈而流謙，鬼神害盈而福謙，人道惡盈而好謙。謙尊而光，卑而不可踰，君子之終也。
+
 \subsubsection{象傳}
+
 地中有山，謙；君子以裒\marginpar{裒，音ㄆㄡˊ，減少}多益寡，稱物平施。
+
 \subsection{初六}
+
 謙謙君子，用涉大川，吉。
+
 \subsubsection{象傳}
+
 謙謙\textsf{君}子，卑以自\textsf{牧}也。\footnote{《諫太宗十思疏》：「念高危，則思謙沖而自牧。」}
+
 \subsection{六二}
+
 鳴謙，貞吉。
+
 \subsubsection{象傳}
+
 鳴謙貞吉，中心得也。
+
 \subsection{九三}
+
 勞謙，君子有終，吉。
+
 \subsubsection{象傳}
+
 勞謙君子，萬民服也。
+
 \subsection{六四}
+
 无不利，撝\marginpar{撝，音ㄏㄨㄟ，謙讓}謙。
+
 \subsubsection{象傳}
+
 无不利，撝謙；不違則也。
+
 \subsection{六五}
+
 不富，以其鄰，利用侵伐，无不利。
+
 \subsubsection{象傳}
+
 利用侵伐，征不服也。
+
 \subsection{上六}
+
 鳴謙，利用行師，征邑國。
+
 \subsubsection{象傳}
+
 鳴謙，志未得也。可用行師，征邑國也。
-\pagebreak
+
 \section{Fabonacci Sequence}
-\[
-	F_0 = 0
-\]
-\[
-	F_1 = 1
-\]
-\[
-	F_n = F_{n-1} + F_{n-2}\ (n \geq 2)
-\]
+
+\[F_0 = 0\]
+
+\[F_1 = 1\]
+
+\[F_n = F_{n-1} + F_{n-2}\ (n \geq 2)\]
+
 \subsection{Martix}
+
 Let $Fib(n) = \begin{bmatrix} F_n & F_{n-1}\end{bmatrix}$.\\[1cm]
 Given $Fib(n) = base \times Fib(n-1)$.\\[1em]
 Then $base = \begin{bmatrix} 1 & 1 \\ 1 & 0\end{bmatrix}$.\\
 Therefore, $Fib(n) = \begin{bmatrix} 1 & 1\end{bmatrix} \times \begin{bmatrix} 1 & 1 \\ 1 & 0\end{bmatrix}^{n-2}$.\\[10pt]
 With \textsl{binary exponentiation}, we can compute \textit{Fabonacci Number} in $\Theta(\log n)$.
-\pagebreak
+
+\section{模逆元}
+
+逆元\textit{(Inverse Element)}、逆元素，又稱反元素，是加法相反數與乘法倒數的推廣。對於一元素及一二元運算，若存在一元素與前者進行運算後可得單位元素，則稱後者為前者之\textbf{「逆元」}。
+
+模逆元，通常指模運算中的乘法逆元\textit{(Modular Multiplicative Inverse)}。對於 $a,\ b$，若 $ax \equiv 1 \pmod b$，則稱 $x$ 為 $a$ 關於 $b$ 之模逆元，記作 $a^{-1}$。
+
+\subsection{求冪}
+
+根據「費馬小定理\textit{(Fermat's little theorem)}」，對於整數 $a$ 及質數 $p$，我們有：
+\[a^p \equiv a \pmod p\]
+兩邊同除 $a^2$，可得：
+\[a^{p-2} \equiv a^{-1} \pmod p\]
+故利用快速冪可求之。
+
+\subsection{解線性同餘方程式}
+
+對於 $ax \equiv 1 \pmod b$ 此「線性同餘方程式」，可以「擴展歐幾里得算法」解之。
+
 \section{Blind}
+
 \subsection{Text}
+
 \blindtext
+
 \subsection{Itemize}
+
 \blinditemize[5]
+
 \subsection{Enum}
+
 \blindenumerate[5]
+
 \subsection{Description}
+
 \blinddescription[5]
+
 \subsection{Math}
+
 \blindmathpaper
+
 \end{document}
